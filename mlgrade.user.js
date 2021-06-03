@@ -11,12 +11,13 @@
 
 (function() {
     'use strict';
-    const ptsPossibleRow = 4
-    const scoresRow = 5
+    const ptsPossibleColumn = 4
+    const scoresColumn = 5
+    const gradedColumn = 8
     const periods = [...Array(6).keys()];
 
     var checkLoaded = setInterval(function() {
-        if ($('#tblassign_1 > tbody').length) {
+        if ($('#tblassign_6 > tbody').length) {
             periods.forEach(period => {
                 period += 1
 
@@ -25,11 +26,13 @@
                 var table = document.querySelector(`#tblassign_${period} > tbody`);
 
                 for (var x = 0; x < table.rows.length; x++) {
-                    var ptsPossible = parseFloat(table.rows[x].cells[ptsPossibleRow].textContent);
-                    var score = table.rows[x].cells[scoresRow].textContent === "" ? 0 : parseFloat(table.rows[x].cells[scoresRow].textContent)
+                    var ptsPossible = parseFloat(table.rows[x].cells[ptsPossibleColumn].textContent);
+                    var score = table.rows[x].cells[scoresColumn].textContent === "" ? 0 : parseFloat(table.rows[x].cells[scoresColumn].textContent)
 
-                    ptsPossibleTotal += ptsPossible
-                    totalScore += score
+                    if(table.rows[x].cells[gradedColumn].querySelector("img") === null) {
+                        ptsPossibleTotal += ptsPossible
+                        totalScore += score
+                    }
                 }
 
                 document.querySelector(`#capPer_${period}`).innerText += " | " + totalScore.toString() + "/" + ptsPossibleTotal.toString()
