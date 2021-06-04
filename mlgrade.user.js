@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         MLGrade
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.2
 // @description  Calculate grade out of total points
 // @author       soulsen
-// @match        https://sis.sanjuan.edu/StudentPortal/Home/PortalMainPage
+// @match        https://*.sanjuan.edu/StudentPortal/Home/PortalMainPage
 // @require      http://code.jquery.com/jquery-3.6.0.min.js
 // @grant        none
 // ==/UserScript==
